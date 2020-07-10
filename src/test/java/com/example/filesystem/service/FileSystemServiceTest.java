@@ -1,6 +1,7 @@
 package com.example.filesystem.service;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Assertions;
@@ -25,8 +26,10 @@ public class FileSystemServiceTest {
 	@Test
 	public void testfileInfo() {
 		try {
+			
+			String path = new File("src/test/resources/testFolder/testFile.txt").getAbsolutePath();
 			FileResponse fileResponse = 
-					fileSystemService.getFileInfo("/Users/ajaysahu/AngularTutorial/gallery/app/showcase/pin.showcase.component.ts");
+					fileSystemService.getFileInfo(path);
 			Assertions.assertNotNull(fileResponse);	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,8 +43,9 @@ public class FileSystemServiceTest {
 	@Test
 	public void testfileInfo_pathInvalid() {
 		try {
+			String path = new File("src/test/resources/testFolder/").getAbsolutePath();
 			FileResponse fileResponse = 
-					fileSystemService.getFileInfo("/fileinfosystem/src/test/java/com/example/");
+					fileSystemService.getFileInfo(path);
 			Assertions.assertNotNull(fileResponse);	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -56,8 +60,9 @@ public class FileSystemServiceTest {
 	@Test
 	public void testPathInfo() {
 		try {
+			String path = new File("src/test/resources/testFolder/").getAbsolutePath();
 			Directory fileResponse = 
-					fileSystemService.getPathInfo("/Users/ajaysahu/AngularTutorial/gallery/app/showcase/");
+					fileSystemService.getPathInfo(path);
 			Assertions.assertNotNull(fileResponse);	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
