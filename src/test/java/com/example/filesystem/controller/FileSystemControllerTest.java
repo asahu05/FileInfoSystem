@@ -3,6 +3,8 @@ package com.example.filesystem.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.File;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +29,28 @@ public class FileSystemControllerTest {
 	
 	@Test
 	 void whenValidInput_file_path_thenReturns200() throws Exception {
-		mockMvc.perform(get("/pathInfo").param("path", "C:\\CLR-Release")
-			    .contentType("application/json"))
+		String path = new File("src/test/resources/testFolders").getAbsolutePath();
+		mockMvc.perform(get("/api/pathInfo").param("path", path)
+			    .contentType("api/application/json"))
 			    .andExpect(status().isOk());
 	  }
 	
 	
 	@Test
 	 void whenValidInput_file_info_thenReturns200() throws Exception {
-		mockMvc.perform(get("/fileInfomation").param("file", "C:\\CLR-Release\\C:\\CLR-Release\\Application-meta\\export (10).csv")
+		String path = new File("src/test/resources/testFolder/testFile.txt").getAbsolutePath();
+		mockMvc.perform(get("/api/fileInfo").param("file", path)
 			    .contentType("application/json"))
 			    .andExpect(status().isOk());
 	  }
 
-	
+	@Test
+	 void whenValidInput_file_path_thenReturns400() throws Exception {
+		String path = new File("src/test/resources/testFolder/testFile.txt").getAbsolutePath();
+		mockMvc.perform(get("/api/fileInfo").param("path", path)
+			    .contentType("api/application/json"))
+			    .andExpect(status().isBadRequest());
+	  }
 
 	
 	

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CustomFile {
 
     private String name;
-    
     private String fileSize;
     
     @JsonProperty("fileType")

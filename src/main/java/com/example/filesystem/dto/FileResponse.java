@@ -2,31 +2,41 @@ package com.example.filesystem.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * Created by ajaysahu on 07/07/2020.
  */
 
 public class FileResponse {
-
-	 private String owner ;
-	 private String creationTime ;
-	 private String lastAccessTime;
-	 private String lastModifiedTime;
-	 private boolean isDirectory;
-	 private boolean isOther;
-	 private boolean isRegularFile;
-	 private boolean isSymbolicLink;
-	 private long size;
-	 private long totalSpace;
-	 private long usedSpace;
-	 private long availableSpace;
-	 private List ownerPermission;
-	 private List groupPermission;
-	 private List AllPermission;
-	 private boolean isArchive;
-	 private boolean isHidden;
-	 private String name;
-	 
+	
+	@JsonInclude(Include.NON_NULL)
+	private String owner ;
+	@JsonInclude(Include.NON_NULL)
+	private String creationTime ;
+	@JsonInclude(Include.NON_NULL)
+	private String lastAccessTime;
+	@JsonInclude(Include.NON_NULL)
+	private String lastModifiedTime;
+	private boolean isDirectory;
+    private boolean isOther;
+	private boolean isRegularFile;
+	private boolean isSymbolicLink;
+	private long size;
+	private long totalSpace;
+	private long usedSpace;
+	private long availableSpace;
+	@JsonInclude(Include.NON_EMPTY)
+	private List ownerPermission;
+	@JsonInclude(Include.NON_EMPTY)
+	private List groupPermission;
+	@JsonInclude(Include.NON_EMPTY)
+	private List AllPermission;
+	private boolean isArchive;
+	private boolean isHidden;
+	private String name;
+	
 	 
 	public String getCreationTime() {
 		return creationTime;
