@@ -2,7 +2,7 @@
 
 Overview:
 
-The Service/Utility retruen the information about files in the specific directory. The service provides two methods:
+The Service/Utility return the information about files in the specific directory. The service provides two methods:
 
 1) api/pathInfo: Given the full path as parameter and api return the json response contains description of all the directories and files. The description includes the full path, size and flag if the entry is the directory or file.
 
@@ -12,16 +12,22 @@ The Service/Utility retruen the information about files in the specific director
 
 Build war files:
 
-compile and run unit tests with mvn clean install
+compile and run unit tests:  mvn clean install
 
 ./FileInfoSystem/target/file-info-system-0.0.1-SNAPSHOT.war
 
-Run coverage
+Run coverage :
 mvn clean verify -Pcoverage -Dspring.profiles.active=local
 
 Then run mvn jacoco:report, the generated report is under target/site/jacoco/index.html
 
-# To run the project
+# Generate javadoc
+we run the command to generate our Javadocs to a directory in target\site:
+
+mvn javadoc:javadoc
+
+
+# Run the Application
 execute fileinfosystem.sh or fileinfosystem.bat
 
 Apis can be hit by specifying http://localhost:8080/{apiName} in the browser after the server is up and running e.g.

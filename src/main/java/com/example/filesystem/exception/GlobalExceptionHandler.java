@@ -1,13 +1,16 @@
 package com.example.filesystem.exception;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * The class is used to handle exception of the controller.
+ * @author Ajay Sahu
+ *
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	

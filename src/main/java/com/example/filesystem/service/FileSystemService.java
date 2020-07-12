@@ -4,26 +4,40 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.filesystem.business.FileAttributeImpl;
 import com.example.filesystem.dto.CustomFile;
 import com.example.filesystem.dto.Directory;
 import com.example.filesystem.dto.FileResponse;
 import com.example.filesystem.dto.FileTypeCode;
 import com.example.filesystem.exception.ApplicationException;
 import com.example.filesystem.exception.ClientException;
-import com.example.filesystem.util.FileUtility;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Created by ajaysahu on 07/07/2020.
+ * The service to process path and fetch all the Directories, files and attributes 
+ * of the file system resources.
+ * 
+ * @author Ajay Sahu
  */
+
 @Service
 public class FileSystemService {
 
 	private static final Logger log = LoggerFactory.getLogger(FileSystemService.class);
+	
+	@Autowired FileAttributeImpl attributeImpl;
+	
+	/**
+	 * This method is used to fetch all the Directories and files recursively 
+	 * @param path  an absolute URL giving the base location of the directory
+	 * @return {@link Directory}
+	 * @throws ApplicationException  If method throws application exception
+	 */
 	
     public Directory getPathInfo(String path) throws ApplicationException {
     	log.info("getPathInfo method started {} " , path);
@@ -39,7 +53,12 @@ public class FileSystemService {
         return pathInformation;
     }
 
-
+    /**
+	 * This method is used to fetch all the file attributes of the given path 
+	 * @param file  an absolute URL giving the base location of the file 
+	 * @return {@link FileResponse}
+	 * @throws ApplicationException  If method throws application exception
+	 */
     public FileResponse getFileInfo(String file) throws ApplicationException {
     	log.info("getFileInfo method started {} " , file);
     	
@@ -53,11 +72,8 @@ public class FileSystemService {
 		Path filePath = Paths.get(file);
 		
 		try {
-			FileUtility.getBasicFileAttributes(filePath, fileResponse);
-			FileUtility.getDosFileAttributes(filePath, fileResponse);
-			FileUtility.getFileOwnerAttributes(filePath, fileResponse);
-			FileUtility.getFileStoreAttributes(filePath, fileResponse);
-			FileUtility.getPosixFileAttributes(filePath, fileResponse);
+			attributeImpl.getFileAttributes(filePath, fileResponse);
+			
 		} catch(IOException ioe) {
 			throw new ApplicationException("File reading exception", ioe);
 		}
