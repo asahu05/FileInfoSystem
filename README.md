@@ -16,7 +16,7 @@ compile and run unit tests:  mvn clean install
 
 ./FileInfoSystem/target/file-info-system-0.0.1-SNAPSHOT.war
 
-Run coverage :
+# Run coverage :
 mvn test
 
 Then run mvn jacoco:report, the generated report is under target/site/jacoco/index.html
