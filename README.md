@@ -17,12 +17,12 @@ compile and run unit tests:  mvn clean install
 ./FileInfoSystem/target/file-info-system-0.0.1-SNAPSHOT.war
 
 Run coverage :
-mvn clean verify -Pcoverage -Dspring.profiles.active=local
+mvn test
 
 Then run mvn jacoco:report, the generated report is under target/site/jacoco/index.html
 
 # Generate javadoc
-we run the command to generate our Javadocs to a directory in target\site:
+we run the command to generate our Javadocs to a directory in target/site:
 
 mvn javadoc:javadoc
 
