@@ -25,7 +25,7 @@ public class Directory {
     private List<Directory> folders;
 
     @JsonProperty("fileType")
-    private String fileTypeCode;
+    private char fileTypeCode;
     
     /**
      * create a directory with the name and filetypecode
@@ -33,7 +33,7 @@ public class Directory {
      * @param fileTypeCode : this flag indicate whether it is a directory or the file
      */
 
-    public Directory(String name,String fileTypeCode) {
+    public Directory(String name, char fileTypeCode) {
         files = new ArrayList<>();
         folders = new ArrayList<>();
         this.name = name;   
@@ -43,14 +43,14 @@ public class Directory {
      * Get the fileTypeCode of the file.
      * @return fileTypeCode : file type code as string
      */
-    public String getFileTypeCode() {
+    public char getFileTypeCode() {
 		return fileTypeCode;
 	}
     /**
      * Set the file type code of the file.
      * @param fileTypeCode : file type code as string 
      */
-	public void setFileTypeCode(String fileTypeCode) {
+	public void setFileTypeCode(char fileTypeCode) {
 		this.fileTypeCode = fileTypeCode;
 	}
 	/**

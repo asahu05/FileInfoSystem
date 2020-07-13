@@ -20,7 +20,7 @@ import com.example.filesystem.dto.FileResponse;
  */
 
 @Component
-public class FileAttributeImpl implements IFileAttribute {
+public class FileAttributeImpl implements IAttribute {
 	
 	private static final Logger log = LoggerFactory.getLogger(FileAttributeImpl.class);
 	

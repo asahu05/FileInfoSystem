@@ -28,7 +28,7 @@ mvn javadoc:javadoc
 
 
 # Run the Application
-execute fileinfosystem.sh or fileinfosystem.bat
+execute run.sh or run.bat
 
 Apis can be hit by specifying http://localhost:8080/{apiName} in the browser after the server is up and running e.g.
 

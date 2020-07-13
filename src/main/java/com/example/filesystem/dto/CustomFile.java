@@ -14,7 +14,7 @@ public class CustomFile {
     private String fileSize;
     
     @JsonProperty("fileType")
-    private String fileTypeCode;
+    private char fileTypeCode;
 
     /**
      * create a custom file with the name, filesize and the filetypecode
@@ -22,7 +22,7 @@ public class CustomFile {
      * @param fileSize : type of the file in bytes. 
      * @param fileTypeCode : this flag indicate whether it is a directory or the file
      */
-    public CustomFile(String name,String fileSize,String fileTypeCode ) {
+    public CustomFile(String name,String fileSize,char fileTypeCode ) {
         this.name = name;
         this.fileSize =fileSize;
         this.fileTypeCode =fileTypeCode;
@@ -66,14 +66,14 @@ public class CustomFile {
 	 *  @return file type code as string
 	 */
 
-	public String getFileTypeCode() {
+	public char getFileTypeCode() {
 		return fileTypeCode;
 	}
 	/**
 	 *  set the file type flag indicate the 'D' or 'F'
 	 *  @param fileTypeCode : file type code as string
 	 */
-	public void setFileTypeCode(String fileTypeCode) {
+	public void setFileTypeCode(char fileTypeCode) {
 		this.fileTypeCode = fileTypeCode;
 	}
 

@@ -10,7 +10,7 @@ import com.example.filesystem.dto.FileResponse;
  * 
  */
 
-public interface IFileAttribute {
+public interface IAttribute {
 	
 	/**
 	 * Use to get the available JDK attributes of a file

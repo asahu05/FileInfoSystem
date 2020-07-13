@@ -9,17 +9,22 @@ public enum FileTypeCode {
 	/**
 	 * Type of the file and directory will be 'F' and 'D'
 	 */
-	DIRECTORY("D", "directory"),
-	FILE("F","file");
+	DIRECTORY('D', "directory"),
+	FILE('F',"file");
 
-	private String code;
+	private char code;
 	private String name;
 
+	FileTypeCode( char code, String name) {
+	   this.name = name;
+	   this.code = code;
+	}
+	
 	/**
 	 * Get the code of the file or directory.
 	 * @return code the code of file or directory.
 	 */
-	public String getCode() {
+	public char getCode() {
 		return code;
 	}
 	
@@ -27,7 +32,7 @@ public enum FileTypeCode {
 	 * Set the code of the file or directory.
 	 * @param code the code of file or directory.
 	 */
-	public void setCode(String code) {
+	public void setCode(char code) {
 		this.code = code;
 	}
 
@@ -47,8 +52,5 @@ public enum FileTypeCode {
 		this.name = name;
 	}
 
-	FileTypeCode(String code, String name) {
-	    this.name = name;
-	    this.code = code;
-	  }
+	
 }
